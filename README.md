@@ -1,47 +1,51 @@
-# ClientRoom
+# client-room
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.0-rc.7.
+Front Angular do gerenciador de salas de reunião.
 
-## Development server
+## Status
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Estudo. Não está em produção. Angular 9 (release candidate) — stack antiga de propósito; é o front do exercício.
 
-## Code scaffolding
+## Para que serve
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Tela para listar, criar, editar e ver detalhes de salas. Consome a API [gerenciador-sala-reuniao](https://github.com/mateusaledev/gerenciador-sala-reuniao). Os dois repos formam o mesmo produto.
 
-## Build
+## Stack
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- Angular 9 RC · TypeScript · RxJS · Bootstrap 4
 
-## Running unit tests
+## Como executar
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Pré-requisitos: Node.js compatível com Angular 9 (a CLI do projeto é `9.0.0-rc.7`), npm.
 
-## Running end-to-end tests
+Suba primeiro o backend. O service chama `http://localhost:8082/api/v1/rooms`. O backend padrão sobe na porta **8080** — alinhe `server.port` no Spring ou o `baseUrl` em `src/app/room.service.ts`.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```bash
+git clone https://github.com/mateusaledev/client-room.git
+cd client-room
+npm install
+ng serve
+```
 
-## Further help
+App em `http://localhost:4200`. Rotas: `/rooms`, `/add`, `/update/:id`, `/details/:id`.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## O que faz
 
-## verificar vesao nodejs
-node -v
+- Lista de salas
+- Cadastro e edição
+- Detalhe de uma sala
+- Exclusão via `RoomService`
 
-### verificar versao npm 
-npm -v
+## Estrutura
 
-### instalar angular 9
-npm install -g @angular/cli@9.0.0-rc.7
+```
+src/app/create-room
+src/app/room-list
+src/app/room-details
+src/app/update-room
+src/app/room.service.ts
+```
 
-### verificar versao angular
-ng --version
+## Backend
 
-### criar projeto 
-ng new client-room
-
-
-
-
-
+https://github.com/mateusaledev/gerenciador-sala-reuniao
